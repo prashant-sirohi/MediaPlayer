@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+.playlists-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px;
+        width: 200px;
+        mat-card-title {
+            text-align: center;
+        }
+        mat-card-actions {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    margin-bottom: 5rem;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
