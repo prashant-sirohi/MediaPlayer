@@ -3,6 +3,7 @@ h1 {
 }
 .playlists-wrap {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     mat-card {
         display: flex;

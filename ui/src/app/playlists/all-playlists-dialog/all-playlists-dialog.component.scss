@@ -1,0 +1,22 @@
+.playlists-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px;
+        width: 200px;
+        mat-card-title {
+            text-align: center;
+        }
+        mat-card-actions {
+            div {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    margin-bottom: 5rem;
+}

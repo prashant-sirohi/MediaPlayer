@@ -1,1 +1,14 @@
-<p>show-playlist works!</p>
+<div *ngIf="playlist">
+    <mat-card>
+        <mat-card-content>
+            <div class="pl-name">{{playlist.name}}</div>
+            <div class="pl-desc">{{playlist.description}}</div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div>
+    Tracks go here
+</div>
+<div>
+    Player goes here
+</div>

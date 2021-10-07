@@ -1,0 +1,28 @@
+mat-card {
+    padding: 0;
+    mat-card-content {
+        height: 30rem;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        background-image: url('../../../assets/default_playlist_cover.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: auto;
+        padding: 1rem;
+        .pl-name {
+            font-size: 3rem;
+            flex: .2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .pl-desc {
+            font-size: 1rem;
+            flex: .2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

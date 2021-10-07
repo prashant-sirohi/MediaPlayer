@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: %i[ show edit update destroy ]
+  before_action :playlist_params, only: %i[ create ]
 
   # GET /playlists or /playlists.json
   def index
@@ -9,6 +10,7 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1 or /playlists/1.json
   def show
+    render json: @playlist
   end
 
   # GET /playlists/new
@@ -23,7 +25,6 @@ class PlaylistsController < ApplicationController
   # POST /playlists or /playlists.json
   def create
     @playlist = Playlist.new(playlist_params)
-
     if @playlist.save
       render json: @playlist, status: :created, location: @playlist
     else
@@ -53,6 +54,19 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def upload_playlist_cover
+    @playlist = Playlist.create!(playlist_cover: params[:file])
+    render json: @playlist
+  end
+
+  def add_track_to_playlist
+    @playlist = Playlist.find(params[:playlist_id])
+    @track = Track.find(params[:track_id])
+    @playlist.tracks << @track
+    @playlist.save()
+    render json: @playlist
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
@@ -61,6 +75,6 @@ class PlaylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def playlist_params
-      params.require(:playlist).permit(:name, :description)
+      params.require(:playlist).permit(:name, :description, :playlist_cover)
     end
 end

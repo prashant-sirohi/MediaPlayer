@@ -1,0 +1,25 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    height: 100%;
+
+    section {
+        flex: 1;
+    }
+}
+.nav-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background: lightgray;
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    height: 2rem;
+    flex-direction: column;
+    text-align: center;
+    &:hover {
+        background: lightslategray;
+    }
+}

@@ -3,20 +3,20 @@
     <mat-card-title>Create a new playlist</mat-card-title>
     <mat-card-content>
         <!-- <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar> -->
-        <form [formGroup]="playlistForm" enctype="multipart/form-data">
-            <!-- <div>
-                <app-avatar matTooltip="You can upload your own image to represent your team in your league."
+        <form (ngSubmit)="createPlaylist()" [formGroup]="playlistForm" enctype="multipart/form-data">
+            <div>
+                <!-- <app-avatar matTooltip="You can upload your own image to represent your team in your league."
                     [userAvatar]="userForm.get('userAvatar').value">
-                </app-avatar>
-                <input type="file" #userAvatar id="userAvatar" class="ng-hide" name="userAvatar"
+                </app-avatar> -->
+                <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
                     (change)="onFileChange($event)" />
-                <label for="userAvatar" class="mat-button mat-raised-button avatar-label">
-                    <i class="material-icons icon">cloud_upload</i> {{fileLabel}}
-                </label>
-                <mat-error *ngIf="fileSizeExceeds">
+                <!-- <label for="playlistCover" class="mat-button mat-raised-button avatar-label">
+                    <i class="material-icons icon">cloud_upload</i> {{}}
+                </label> -->
+                <!-- <mat-error *ngIf="fileSizeExceeds">
                     <mat-icon matSuffix matTooltip="Maximum file size allowed is 1mb">error</mat-icon>
-                </mat-error>
-            </div> -->
+                </mat-error> -->
+            </div>
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Choose a name for your playlist..." formControlName="name">
@@ -28,11 +28,9 @@
                 <mat-label>Description</mat-label>
                 <input matInput placeholder="A short description of your playlist..." formControlName="description">
             </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <button type="submit" mat-raised-button color="primary">Create New Playlist</button>
+            </div>
         </form>
     </mat-card-content>
-    <mat-card-actions>
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-            <button mat-button mat-raised-button color="primary" (click)="createPlaylist()">Create New Playlist</button>
-        </div>
-    </mat-card-actions>
 </mat-card>

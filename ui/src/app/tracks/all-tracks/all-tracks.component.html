@@ -1,0 +1,18 @@
+<mat-card *ngFor="let track of tracks">
+    <mat-card-title>Play button goes here</mat-card-title>
+    <mat-card-content>
+        <div class="tracks-wrap" >
+            <div class="track">
+                {{track.cover}}
+                {{track.name}}
+            </div>
+            <div class="track">
+                2:53
+                {{track.artist}}
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Go to Playlist</button>
+    </mat-card-actions>
+</mat-card>

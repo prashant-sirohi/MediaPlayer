@@ -1,3 +1,10 @@
+import { AllPlaylistsDialogComponent } from './playlists/all-playlists-dialog/all-playlists-dialog.component';
+import { HeaderComponent } from './header/header.component';
+import { NavigationService } from './services/sideNav.service';
+import { TracksService } from './services/tracks.service';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { AllTracksComponent } from './tracks/all-tracks/all-tracks.component';
+import { ShowPlaylistComponent } from './playlists/show-playlist/show-playlist.component';
 import { NewPlaylistComponent } from './playlists/new-playlist/new-playlist.component';
 import { PlaylistsService } from './services/playlists.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -10,12 +17,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaylistsComponent } from './playlists/all-Playlists/playlists.component';
 import { MaterialModule } from './material.module';
+import { NewTrackComponent } from './tracks/new-track/new-track.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaylistsComponent,
-    NewPlaylistComponent
+    NewPlaylistComponent,
+    ShowPlaylistComponent,
+    NewTrackComponent,
+    AllTracksComponent,
+    SideNavComponent,
+    HeaderComponent,
+    AllPlaylistsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +40,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [PlaylistsService],
+  providers: [PlaylistsService, TracksService, NavigationService],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule,

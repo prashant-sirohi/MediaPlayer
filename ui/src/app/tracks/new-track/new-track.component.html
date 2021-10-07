@@ -1,0 +1,41 @@
+
+<mat-card>
+    <mat-card-title>Create a new Track</mat-card-title>
+    <mat-card-content>
+        <!-- <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar> -->
+        <form (ngSubmit)="createTrack()" [formGroup]="trackForm" enctype="multipart/form-data">
+            <div>
+                <!-- <app-avatar matTooltip="You can upload your own image to represent your team in your league."
+                    [userAvatar]="userForm.get('userAvatar').value">
+                </app-avatar> -->
+                <!-- <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
+                    (change)="onFileChange($event)" /> -->
+                <!-- <label for="playlistCover" class="mat-button mat-raised-button avatar-label">
+                    <i class="material-icons icon">cloud_upload</i> {{}}
+                </label> -->
+                <!-- <mat-error *ngIf="fileSizeExceeds">
+                    <mat-icon matSuffix matTooltip="Maximum file size allowed is 1mb">error</mat-icon>
+                </mat-error> -->
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Choose a name for your track..." formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Artist</mat-label>
+                <input matInput placeholder="Artist of the track..." formControlName="artist">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cover</mat-label>
+                <input matInput placeholder="Cover of the track..." formControlName="cover">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>File</mat-label>
+                <input matInput placeholder="File of the track..." formControlName="file">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <button type="submit" mat-raised-button color="primary">Create New Track</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
