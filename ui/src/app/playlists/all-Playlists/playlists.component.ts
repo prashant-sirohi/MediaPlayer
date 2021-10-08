@@ -2,6 +2,7 @@ import { Playlist } from './../interfaces/playlist';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlaylistsService } from '../../services/playlists.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-playlists',
@@ -15,6 +16,7 @@ export class PlaylistsComponent implements OnInit {
     private playlistsService: PlaylistsService,
     private router: Router,
   ) { }
+  defaultPlaylistUrl = '../../../assets/default_track_cover.jpeg';
 
   ngOnInit(): void {
     this.playlistsService.getAll().subscribe((data: any)=> {
@@ -28,6 +30,10 @@ export class PlaylistsComponent implements OnInit {
 
   goToPlaylist(playlistId: any) {
     this.router.navigate([`/playlist/${playlistId}`])
+  }
+
+  createImageUrl(imageUrl: string) {
+    return `${environment.apiBase}${imageUrl}`
   }
 
 }

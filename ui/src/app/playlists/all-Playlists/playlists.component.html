@@ -1,36 +1,23 @@
-<h1>All Playlists</h1>
-<div class="playlists-wrap">
-    <ng-container *ngIf="playlists.length">
-        <mat-card *ngFor="let playlist of playlists">
-            <mat-card-title>{{playlist.name}}</mat-card-title>
-            <mat-card-content>
-                
-            </mat-card-content>
-            <mat-card-actions>
-                <div>
-                    <button mat-button mat-raised-button color="primary" (click)="goToPlaylist(playlist.id)">Go to Playlist</button>
-                </div>
-            </mat-card-actions>
-        </mat-card>
-    </ng-container>
-    
-    <ng-container *ngIf="!playlists.length">
-        <mat-card (click)="goToNewPlaylist()">
-            <mat-card-title>
-                No Playlists created yet
-            </mat-card-title>
-            <mat-card-content>
-                
-            </mat-card-content>
-            <mat-card-actions>
-                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-                    <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create New Playlist</button>
-                </div>
-            </mat-card-actions>
-        </mat-card>
-    </ng-container>
+<ng-container *ngIf="playlists?.length">
+    <h1>All Playlists</h1>
+    <div class="playlists-wrap">
+        <ng-container *ngIf="playlists.length">
+            <mat-card *ngFor="let playlist of playlists">
+                <mat-card-title>{{playlist.name}}</mat-card-title>
+                <mat-card-content (click)="goToPlaylist(playlist.id)">
+                    <img [src]='createImageUrl(playlist.playlist_cover.url) || defaultPlaylistUrl' alt="">
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
 
-</div>
-<div class="flex-center">
-    <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create new  Playlist</button>
-</div>
+    </div>
+    <div class="flex-center">
+        <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create new  Playlist</button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!playlists?.length">
+    <app-no-result-component>
+        <a routerLink="/new-playlist"><button mat-button mat-raised-button color="primary"> Create your first playlist </button></a>
+    </app-no-result-component>
+</ng-container>
