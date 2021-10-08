@@ -35,4 +35,8 @@ export class TracksService {
   uploadTrackFile(request: any): Observable<any> {
     return this.http.post<Track>(`${this.url}/upload_track_file`, request.formData)
   }
+
+  uploadTrackCover(request: {formData: FormData, id: number}): Observable<any> {
+    return this.http.post<Track>(`${this.url}/${request.id}/upload_track_cover`, request.formData)
+  }
 }

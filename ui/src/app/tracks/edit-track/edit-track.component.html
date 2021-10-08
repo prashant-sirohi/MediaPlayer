@@ -11,10 +11,9 @@
                 <mat-label>Artist</mat-label>
                 <input matInput placeholder="Artist of the track..." formControlName="artist">
             </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Cover</mat-label>
-                <input matInput placeholder="Cover of the track..." formControlName="cover">
-            </mat-form-field>
+            <img [src]='trackCoverUrl' alt="">
+            <input type="file" #trackCover id="trackCover" class="ng-hide" name="trackCover"
+                    (change)="onFileChange($event)" accept="image/jpeg, image/png" />
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
                 <button type="submit" mat-raised-button color="primary">Create New Track</button>
             </div>

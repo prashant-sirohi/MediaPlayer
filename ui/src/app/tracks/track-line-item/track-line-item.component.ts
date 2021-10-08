@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AllPlaylistsDialogComponent } from 'src/app/playlists/all-playlists-dialog/all-playlists-dialog.component';
 import { PlaylistsService } from 'src/app/services/playlists.service';
@@ -13,10 +14,13 @@ export class TrackLineItemComponent implements OnInit {
 
   @Input() track: Track;
   @Input() allowActions: boolean = false;
+  @Input() allowSelection: boolean = false;
+  @Output() trackSelected = new EventEmitter<Track>();
 
   constructor(
     private playlistsService: PlaylistsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +38,14 @@ export class TrackLineItemComponent implements OnInit {
 
   addTrackToPlaylist(playlistId, trackId) {
     this.playlistsService.addTrackToPlaylist({trackId, playlistId }).subscribe()
+  }
+
+  goToTrack() {
+    this.router.navigate([`/tracks/${this.track.id}`])
+  }
+
+  selectTrack(track: Track) {
+    this.trackSelected.emit(track)
   }
 
 }

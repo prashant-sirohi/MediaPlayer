@@ -1,3 +1,4 @@
+import { ShowTrackComponent } from './tracks/show-track/show-track.component';
 import { EditTrackComponent } from './tracks/edit-track/edit-track.component';
 import { AllTracksComponent } from './tracks/all-tracks/all-tracks.component';
 import { NewTrackComponent } from './tracks/new-track/new-track.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'tracks/:id/edit', component: EditTrackComponent},
   { path: 'new-track', component: NewTrackComponent},
   { path: 'tracks', component: AllTracksComponent},
+  { path: 'tracks/:id', component: ShowTrackComponent},
   // { path: 'playlist/:id', component: ShowPlaylistComponent},
 ];
 

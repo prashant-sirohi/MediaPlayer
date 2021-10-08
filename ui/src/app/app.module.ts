@@ -1,3 +1,5 @@
+import { AllTracksDialogComponent } from './tracks/all-tracks-dialog/all-tracks-dialog.component';
+import { ShowTrackComponent } from './tracks/show-track/show-track.component';
 import { EditTrackComponent } from './tracks/edit-track/edit-track.component';
 import { TrackLineItemComponent } from './tracks/track-line-item/track-line-item.component';
 import { AllPlaylistsDialogComponent } from './playlists/all-playlists-dialog/all-playlists-dialog.component';
@@ -33,7 +35,9 @@ import { NewTrackComponent } from './tracks/new-track/new-track.component';
     HeaderComponent,
     AllPlaylistsDialogComponent,
     TrackLineItemComponent,
-    EditTrackComponent
+    EditTrackComponent,
+    ShowTrackComponent,
+    AllTracksDialogComponent
   ],
   imports: [
     BrowserModule,

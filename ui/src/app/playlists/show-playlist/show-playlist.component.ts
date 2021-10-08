@@ -1,8 +1,10 @@
+import { AllTracksDialogComponent } from './../../tracks/all-tracks-dialog/all-tracks-dialog.component';
 import { Playlist } from './../interfaces/playlist';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-show-playlist',
@@ -14,6 +16,7 @@ export class ShowPlaylistComponent implements OnInit {
   constructor(
     private playlistsService: PlaylistsService,
     private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   playlist: Playlist;
@@ -62,5 +65,17 @@ export class ShowPlaylistComponent implements OnInit {
             }
         };
     }
+  }
+
+  openTracksDialog(){
+      const dialogRef = this.dialog.open(AllTracksDialogComponent, {
+        data: {}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        this.playlistsService.addTracksToPlaylist({tracks: result, playlistId: this.playlist.id}).subscribe(res => {
+          this.playlist = res
+        })
+      });
   }
 }

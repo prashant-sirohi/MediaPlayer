@@ -1,1 +1,13 @@
-<p>all-tracks-dialog works!</p>
+<h1 mat-dialog-title>Choose Tracks to add to playlist</h1>
+<div mat-dialog-content>
+  <div class="tracks-wrap">
+    <ng-container *ngIf="tracks">
+      <ng-container *ngFor="let track of tracks">
+        <app-track-line-item (trackSelected)="onTrackSelected($event)" [track]="track" [allowSelection]="true" [allowActions]="false"></app-track-line-item>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</div>

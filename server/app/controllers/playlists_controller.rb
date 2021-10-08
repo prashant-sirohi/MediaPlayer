@@ -67,6 +67,13 @@ class PlaylistsController < ApplicationController
     render json: @playlist
   end
 
+  def add_tracks_to_playlist
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.tracks << Track.where(id: params[:trackIds]).all
+    @playlist.save()
+    render json: @playlist.to_json(include: :tracks)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist

@@ -16,6 +16,7 @@
             <div class="pl-desc">{{playlist.description}}</div>
         </mat-card-content>
     </mat-card>
+    <button mat-button mat-raised-button color="primary" (click)="openTracksDialog()">Add more Tracks</button>
 </div>
 <div class="tracks-list" *ngIf="playlist">
     <ng-container *ngFor="let track of playlist.tracks">

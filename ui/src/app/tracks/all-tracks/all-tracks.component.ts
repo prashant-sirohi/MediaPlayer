@@ -32,10 +32,6 @@ export class AllTracksComponent implements OnInit {
     this.router.navigate(['new-track'])
   }
 
-  goToTrack(trackId: any) {
-    this.router.navigate([`/track/${trackId}`])
-  }
-
   openPlaylistDialog(trackId: number) {
     const dialogRef = this.dialog.open(AllPlaylistsDialogComponent, {
       data: {}

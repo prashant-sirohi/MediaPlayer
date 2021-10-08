@@ -2,7 +2,7 @@
     <mat-card-title>
         <img src='../../../assets/default_track_cover.jpeg' alt="">
     </mat-card-title>
-    <mat-card-content>
+    <mat-card-content (click)="goToTrack()">
         <div class="tracks-wrap" >
             <div class="track">
                 {{track.cover}}
@@ -15,6 +15,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="allowActions" mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Go to Playlist</button>
+        <button *ngIf="allowActions" mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Add to Playlist</button>
+        <button *ngIf="allowSelection" mat-button mat-raised-button color="primary" (click)="selectTrack(track)">Select</button>
     </mat-card-actions>
 </mat-card>

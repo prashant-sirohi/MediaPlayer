@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Playlist } from '../playlists/interfaces';
+import { Track } from '../tracks/interfaces';
+import _ from 'lodash'
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +37,11 @@ export class PlaylistsService {
   addTrackToPlaylist(request: {trackId: number, playlistId: number}) {
     const {trackId, playlistId} = request;
     return this.http.post<Playlist>(`${this.url}/add_track_to_playlist`, {track_id: trackId, playlist_id: playlistId})
+  }
+
+  addTracksToPlaylist(request: {tracks: Track[], playlistId: number}) {
+    const {tracks, playlistId} = request;
+    const trackIds = _.map(tracks, 'id');
+    return this.http.post<Playlist>(`${this.url}/add_tracks_to_playlist`, {trackIds, playlist_id: playlistId})
   }
 }

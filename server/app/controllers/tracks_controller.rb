@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :set_track, only: %i[ show edit update destroy ]
+  before_action :set_track, only: %i[ show edit update destroy upload_track_cover ]
 
   # GET /tracks or /tracks.json
   def index
@@ -9,6 +9,7 @@ class TracksController < ApplicationController
 
   # GET /tracks/1 or /tracks/1.json
   def show
+    render json: {track: @track}
   end
 
   # GET /tracks/new
@@ -51,6 +52,11 @@ class TracksController < ApplicationController
   def upload_track_file
     @track = Track.new()
     @track.update!(file: params[:file])
+    render json: @track
+  end
+
+  def upload_track_cover
+    @track.update!(cover: params[:file])
     render json: @track
   end
 
