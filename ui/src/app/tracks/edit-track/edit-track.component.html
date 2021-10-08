@@ -1,0 +1,23 @@
+
+<mat-card>
+    <mat-card-title>Fill out track details</mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="createTrack()" [formGroup]="trackForm" enctype="multipart/form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Choose a name for your track..." formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Artist</mat-label>
+                <input matInput placeholder="Artist of the track..." formControlName="artist">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cover</mat-label>
+                <input matInput placeholder="Cover of the track..." formControlName="cover">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <button type="submit" mat-raised-button color="primary">Create New Track</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

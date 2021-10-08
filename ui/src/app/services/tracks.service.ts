@@ -28,7 +28,11 @@ export class TracksService {
     return this.http.post<Track>(this.url, track)
   }
 
-  // uploadPlaylistCover(request: any): Observable<any> {
-  //   return this.http.post<Playlist>(`${this.url}/upload_playlist_cover`, request)
-  // }
+  edit(track: Track): Observable<Track> {
+    return this.http.put<Track>(`${this.url}/${track.id}`, track)
+  }
+
+  uploadTrackFile(request: any): Observable<any> {
+    return this.http.post<Track>(`${this.url}/upload_track_file`, request.formData)
+  }
 }

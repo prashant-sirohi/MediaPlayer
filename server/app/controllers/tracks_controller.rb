@@ -32,14 +32,10 @@ class TracksController < ApplicationController
 
   # PATCH/PUT /tracks/1 or /tracks/1.json
   def update
-    respond_to do |format|
-      if @track.update(track_params)
-        format.html { redirect_to @track, notice: "Track was successfully updated." }
-        format.json { render :show, status: :ok, location: @track }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
-      end
+    if @track.update(edit_track_params)
+      render json: @track
+    else
+      render json: @track.errors, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +48,12 @@ class TracksController < ApplicationController
     end
   end
 
+  def upload_track_file
+    @track = Track.new()
+    @track.update!(file: params[:file])
+    render json: @track
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_track
@@ -61,5 +63,9 @@ class TracksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def track_params
       params.require(:track).permit(:name, :file, :cover, :artist)
+    end
+
+    def edit_track_params
+      params.require(:track).permit(:name, :cover, :artist)
     end
 end
