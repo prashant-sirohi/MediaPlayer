@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrackLiteComponent } from './track-lite.component';
+import { TrackLineItemComponent } from './track-line-item.component';
 
-describe('TrackLiteComponent', () => {
-  let component: TrackLiteComponent;
-  let fixture: ComponentFixture<TrackLiteComponent>;
+describe('TrackLineItemComponent', () => {
+  let component: TrackLineItemComponent;
+  let fixture: ComponentFixture<TrackLineItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrackLiteComponent ]
+      declarations: [ TrackLineItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrackLiteComponent);
+    fixture = TestBed.createComponent(TrackLineItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

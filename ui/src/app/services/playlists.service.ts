@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -25,11 +25,11 @@ export class PlaylistsService {
   }
 
   create(playlist: Playlist): Observable<Playlist> {
-    return this.http.post<Playlist>(this.url, {name: playlist.name, description: playlist.description, playlist_cover: playlist.playlistCover})
+    return this.http.post<Playlist>(this.url, {playlist})
   }
 
-  uploadPlaylistCover(request: any): Observable<any> {
-    return this.http.post<Playlist>(`${this.url}/upload_playlist_cover`, request)
+  uploadPlaylistCover(request: {formData: FormData, id: number}): Observable<any> {
+    return this.http.post<Playlist>(`${this.url}/${request.id}/upload_playlist_cover`, request.formData)
   }
 
   addTrackToPlaylist(request: {trackId: number, playlistId: number}) {

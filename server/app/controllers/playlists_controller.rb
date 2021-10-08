@@ -1,6 +1,5 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: %i[ show edit update destroy ]
-  before_action :playlist_params, only: %i[ create ]
 
   # GET /playlists or /playlists.json
   def index
@@ -10,7 +9,7 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1 or /playlists/1.json
   def show
-    render json: @playlist
+    render json: @playlist.to_json(include: :tracks)
   end
 
   # GET /playlists/new
@@ -55,7 +54,8 @@ class PlaylistsController < ApplicationController
   end
 
   def upload_playlist_cover
-    @playlist = Playlist.create!(playlist_cover: params[:file])
+    @playlist = Playlist.find(params[:id])
+    @playlist.update!(playlist_cover: params[:file])
     render json: @playlist
   end
 

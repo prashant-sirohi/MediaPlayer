@@ -1,3 +1,4 @@
+import { TrackLineItemComponent } from './tracks/track-line-item/track-line-item.component';
 import { AllPlaylistsDialogComponent } from './playlists/all-playlists-dialog/all-playlists-dialog.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationService } from './services/sideNav.service';
@@ -29,7 +30,8 @@ import { NewTrackComponent } from './tracks/new-track/new-track.component';
     AllTracksComponent,
     SideNavComponent,
     HeaderComponent,
-    AllPlaylistsDialogComponent
+    AllPlaylistsDialogComponent,
+    TrackLineItemComponent
   ],
   imports: [
     BrowserModule,

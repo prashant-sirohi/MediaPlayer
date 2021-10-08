@@ -1,0 +1,25 @@
+mat-card {
+    margin-bottom: 1rem;
+    display: flex;
+    mat-card-title {
+        margin-bottom: 0;
+        flex: .06;
+    }
+    mat-card-content {
+        flex: .8;
+        margin-bottom: 0;
+        .tracks-wrap {
+            display: flex;
+            flex-direction: column;
+            .track {
+                display: flex;
+            }
+        }
+    }
+    mat-card-actions {
+        flex: .14;
+    }
+    img {
+        width: 60px;
+    }
+}

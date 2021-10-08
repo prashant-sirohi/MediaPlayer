@@ -2,27 +2,12 @@
 <mat-card>
     <mat-card-title>Create a new playlist</mat-card-title>
     <mat-card-content>
-        <!-- <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar> -->
         <form (ngSubmit)="createPlaylist()" [formGroup]="playlistForm" enctype="multipart/form-data">
             <div>
-                <!-- <app-avatar matTooltip="You can upload your own image to represent your team in your league."
-                    [userAvatar]="userForm.get('userAvatar').value">
-                </app-avatar> -->
-                <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
-                    (change)="onFileChange($event)" />
-                <!-- <label for="playlistCover" class="mat-button mat-raised-button avatar-label">
-                    <i class="material-icons icon">cloud_upload</i> {{}}
-                </label> -->
-                <!-- <mat-error *ngIf="fileSizeExceeds">
-                    <mat-icon matSuffix matTooltip="Maximum file size allowed is 1mb">error</mat-icon>
-                </mat-error> -->
             </div>
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Choose a name for your playlist..." formControlName="name">
-                <!--mat-error>Team name should be between 4 and 20 chars long</!--mat-error-->
-                <!-- <mat-icon matSuffix matTooltip="Your team name is public and will be visible to others in your league">
-                    help</mat-icon> -->
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>

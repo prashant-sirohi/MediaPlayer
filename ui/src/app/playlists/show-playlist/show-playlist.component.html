@@ -1,13 +1,26 @@
-<div *ngIf="playlist">
+<div class="playlist-info" *ngIf="playlist">
     <mat-card>
         <mat-card-content>
-            <div class="pl-name">{{playlist.name}}</div>
+            <div>
+                <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
+                    (change)="onFileChange($event)" accept="image/jpeg, image/png" />
+            </div>
+            <div class="pl-info">
+                <div>
+                    <img [src]='playlistCoverUrl || defaultPlaylistUrl' alt="">
+                </div>
+                <div class="pl-name">
+                    {{playlist.name}}
+                </div>
+            </div>
             <div class="pl-desc">{{playlist.description}}</div>
         </mat-card-content>
     </mat-card>
 </div>
-<div>
-    Tracks go here
+<div class="tracks-list" *ngIf="playlist">
+    <ng-container *ngFor="let track of playlist.tracks">
+        <app-track-line-item [track]="track"></app-track-line-item>
+    </ng-container>
 </div>
 <div>
     Player goes here
