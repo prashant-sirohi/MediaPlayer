@@ -1,27 +1,47 @@
 mat-card {
     margin-bottom: 1rem;
     display: flex;
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 4px;
+    background: #000000;
     mat-card-title {
         margin-bottom: 0;
         flex: .06;
+        min-width: 10%;
+        align-self: center;
     }
     mat-card-content {
         flex: .8;
         margin-bottom: 0;
+        max-width: 60%;
+        align-self: center;
         .tracks-wrap {
             display: flex;
             flex-direction: column;
             .track {
                 display: flex;
             }
+            .track-name{
+                font-size: 16px;
+            }
         }
     }
     mat-card-actions {
         flex: .14;
+        min-width: 30%;
+        text-align: right;
+        align-self: center;
+        margin: 0px;
+        padding: 0px;
     }
+    
     img {
         width: 60px;
+        height: 60px;
         position: relative;
+        border-radius: 4px;
     }
     .play-icon{
         position: absolute;
@@ -33,6 +53,7 @@ mat-card {
         background: rgb(0 0 0 / 30%);
         cursor: pointer;
         transition-duration: 0.5s;
+        border-radius: 4px;
     }
     .play-icon:hover{
         background: rgb(0 0 0 / 70%); 
@@ -49,6 +70,7 @@ mat-card {
         transition-duration: 0.5s;
         font-size: 14px;
         visibility: hidden;
+        border-radius: 4px;
     }
 }
 :host{
@@ -64,4 +86,7 @@ mat-card {
         }
     }
     
+}
+.mat-card>.mat-card-actions:last-child{
+    margin-bottom: 0px;
 }

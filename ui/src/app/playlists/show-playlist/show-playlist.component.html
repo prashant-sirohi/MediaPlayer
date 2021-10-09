@@ -10,8 +10,8 @@
                         (change)="onFileChange($event)" accept="image/jpeg, image/png" />
                     <label [hidden]="playlistCoverUrl" [ngClass]="{'ng-hide': playlistCoverUrl}" for="playlistCover">
                         <span>
-                            <mat-icon>cloud_upload</mat-icon>
-                            Chose a cover
+                            <mat-icon>cloud_upload</mat-icon> 
+                            &nbsp;&nbsp;Choose a cover
                         </span>
                     </label>
                 </div>
@@ -31,9 +31,9 @@
 </div>
 <div class="tracks-list" *ngIf="playlist">
     <ng-container *ngFor="let track of playlist.tracks; let i = index">
-        <app-track-line-item [track]="track" [trackIndex]="i" (currentTrack)="onPlayCommand($event)" [ngClass]="{'playingtrack' : playingTrackId == track.id}"></app-track-line-item>
+        <app-track-line-item [track]="track" [trackIndex]="i" (currentTrack)="onPlayCommand($event)"  [ngClass]="{'playingtrack' : playingTrackId == track.id}"></app-track-line-item>
     </ng-container>
 </div>
 <div>
-    <app-player [files]="tracks" [playTrack]="currentActiveTrack"></app-player>
+    <app-player [files]="tracks" [playTrack]="currentActiveTrack" (playingTrackNow)="onPlayingTrackChange($event)"></app-player>
 </div>

@@ -3,7 +3,7 @@
   mat-card {
     padding: 0;
     mat-card-content {
-      height: 30rem;
+      height: 25rem;
       display: flex;
       justify-content: flex-end;
       flex-direction: column;
@@ -20,10 +20,11 @@
         flex-direction: column;
         align-items: center;
         img {
-          width: 300px;
-          height: 300px;
+          width: 150px;
+          height: 150px;
           object-fit: cover;
           border-radius: 50%;
+          border: 2px solid #c2315c;
         }
         .pl-name {
           display: flex;
@@ -44,8 +45,8 @@
         display: flex;
         justify-content: center;
         cursor: pointer;
-        height: 300px;
-        width: 300px;
+        width: 150px;
+        height: 150px;
         border: 1px solid gray;
         border-radius: 50%;
         margin-bottom: 1rem;
@@ -53,7 +54,7 @@
         span {
             display: flex;
             align-items: center;
-            font-size: 30px;
+            font-size: 14px;
         }
       &.ng-hide {
         display: none;

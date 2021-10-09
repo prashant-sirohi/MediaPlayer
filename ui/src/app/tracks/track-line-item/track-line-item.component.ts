@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AllPlaylistsDialogComponent } from 'src/app/playlists/all-playlists-dialog/all-playlists-dialog.component';
@@ -20,6 +21,9 @@ export class TrackLineItemComponent implements OnInit {
   @Output() trackSelected = new EventEmitter<Track>();
   @Output() currentTrack = new EventEmitter<any>();
   @Output() trackDismissed = new EventEmitter<Track>();
+  apiBase = environment.apiBase;
+  thumb: string = '../../../assets/default_track_cover.jpeg';
+  
 
   constructor(
     private playlistsService: PlaylistsService,
@@ -57,6 +61,10 @@ export class TrackLineItemComponent implements OnInit {
   }
   playThisTrack(track: Track){
     this.currentTrack.emit({track:track, index: this.trackIndex})
+  }
+
+  createImageUrl(imageUrl: string) {
+    return `${this.apiBase}${imageUrl}`
   }
 
 }

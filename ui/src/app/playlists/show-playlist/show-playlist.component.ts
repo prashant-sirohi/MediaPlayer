@@ -76,7 +76,7 @@ export class ShowPlaylistComponent implements OnInit {
 
   openTracksDialog(){
       const dialogRef = this.dialog.open(AllTracksDialogComponent, {
-        width: '600px',
+        width: '800px',
         data: {
           playlistId: this.playlist.id,
           filterAddedSongs: true
@@ -91,8 +91,13 @@ export class ShowPlaylistComponent implements OnInit {
         }
       });
   }
+
   onPlayCommand(event){
     this.currentActiveTrack = event;
     this.playingTrackId = event.track.id;
+  }
+
+  onPlayingTrackChange(event){
+    this.playingTrackId = event.track.id
   }
 }

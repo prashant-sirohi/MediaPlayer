@@ -13,6 +13,7 @@ export class AllTracksComponent implements OnInit {
 
   tracks: Track[] = [];
   currentActiveTrack: any;
+  playingTrackId: number;
 
   constructor(
     private tracksService: TracksService,
@@ -32,6 +33,10 @@ export class AllTracksComponent implements OnInit {
 
   onPlayCommand(event){
     this.currentActiveTrack = event;
+  }
+
+  onPlayingTrackChange(event){
+    this.playingTrackId = event.track.id
   }
 
 }

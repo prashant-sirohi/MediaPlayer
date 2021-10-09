@@ -20,6 +20,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
   playing: boolean = false;
   volumeSlider: boolean = false;
   apiBase = environment.apiBase;
+  @Output() playingTrackNow = new EventEmitter<any>();
 
   constructor(private audioService: AudioService) { 
     this.audioService.getState()
@@ -34,6 +35,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
   ngOnChanges(changes: SimpleChanges) {
     if(this.playTrack){
       this.openFile(this.apiBase+this.playTrack.track.file.url, this.playTrack.index)
+      this.playingTrackNow.emit(this.playTrack)
     }
   }
   ngOnDestroy(){
@@ -70,12 +72,14 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
     const index = this.currentFile.index + 1;
     const file = this.files[index];
     this.openFile(this.apiBase+file.file.url, index);
+    this.playingTrackNow.emit({track: file});
   }
 
   previous() {
     const index = this.currentFile.index - 1;
     const file = this.files[index];
     this.openFile(this.apiBase+file.file.url, index);
+    this.playingTrackNow.emit({track: file})
   }
 
   isFirstPlaying() {
