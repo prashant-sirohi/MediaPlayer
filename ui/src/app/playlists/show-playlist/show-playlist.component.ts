@@ -24,6 +24,7 @@ export class ShowPlaylistComponent implements OnInit {
   playlist: Playlist;
   tracks : Array<Track> = [];
   currentActiveTrack: any;
+  playingTrackId: number;
 
   id: number;
   @ViewChild('playlistCover') private playlistCover;
@@ -90,8 +91,8 @@ export class ShowPlaylistComponent implements OnInit {
         }
       });
   }
-
-  playTrack(track, index) {
-    this.currentActiveTrack = { track, index: index}
+  onPlayCommand(event){
+    this.currentActiveTrack = event;
+    this.playingTrackId = event.track.id;
   }
 }

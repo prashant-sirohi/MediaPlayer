@@ -15,7 +15,9 @@ export class TrackLineItemComponent implements OnInit {
   @Input() track: Track;
   @Input() allowActions: boolean = false;
   @Input() allowSelection: boolean = false;
+  @Input() trackIndex: number;
   @Output() trackSelected = new EventEmitter<Track>();
+  @Output() currentTrack = new EventEmitter<any>();
   @Output() trackDismissed = new EventEmitter<Track>();
 
   constructor(
@@ -47,6 +49,9 @@ export class TrackLineItemComponent implements OnInit {
 
   selectTrack(checked: boolean, track: Track) {
     checked ? this.trackSelected.emit(track) : this.trackDismissed.emit(track)
+  }
+  playThisTrack(track: Track){
+    this.currentTrack.emit({track:track, index: this.trackIndex})
   }
 
 }

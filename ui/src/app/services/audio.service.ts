@@ -11,7 +11,7 @@ export class AudioService {
   private stop$ = new Subject();
   private audioObj = new Audio();
   audioEvents = [
-    'ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay', 'loadedmetadata', 'loadstart'
+    'ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay', 'loadedmetadata', 'loadstart', 'volumechange'
   ];
   private state: StreamState = {
     playing: false,
@@ -21,6 +21,7 @@ export class AudioService {
     currentTime: undefined,
     canplay: false,
     error: false,
+    volume: 1
   };
 
   private streamObservable(url) {
@@ -80,6 +81,10 @@ export class AudioService {
     this.audioObj.currentTime = seconds;
   }
 
+  volume(number){
+    this.audioObj.volume = number;
+  }
+
   formatTime(time: number, format: string = 'HH:mm:ss') {
     const momentTime = time * 1000;
     return moment.utc(momentTime).format(format);
@@ -99,6 +104,9 @@ export class AudioService {
         break;
       case 'pause':
         this.state.playing = false;
+        break;
+      case 'volumechange':
+        this.state.volume = this.audioObj.volume;
         break;
       case 'timeupdate':
         this.state.currentTime = this.audioObj.currentTime;
@@ -120,7 +128,8 @@ export class AudioService {
       duration: undefined,
       currentTime: undefined,
       canplay: false,
-      error: false
+      error: false,
+      volume: this.state.volume,
     };
   }
 

@@ -1,10 +1,10 @@
-<mat-card *ngIf="track" (click)="playTrack(track, 0)">
+<mat-card *ngIf="track">
     <mat-card-content>
-        <img [src]='trackCoverUrl' alt="">
+        <img [src]='trackCoverUrl' alt=""  (click)="playTrack(track, 0)">
         {{track.name}}
         {{track.artist}}
     </mat-card-content>
 </mat-card>
 <div>
-    <app-player [files] = "[trackSingle]" [playTrack] = "trackSingle"></app-player>
+    <app-player [files] = "[currentActiveTrack]" [playTrack] = "currentActiveTrack"></app-player>
 </div>

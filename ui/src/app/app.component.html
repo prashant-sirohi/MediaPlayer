@@ -8,6 +8,7 @@
   <section>
     <router-outlet></router-outlet>
   </section>
+  <app-footer></app-footer>
 </div>
 <ng-template #navContent>
   <div class="nav-item" *ngFor="let navItem of navItems" (click)="navigate(navItem)">

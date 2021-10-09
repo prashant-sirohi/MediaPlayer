@@ -15,7 +15,7 @@ import { PlayerComponent } from 'src/app/player/player.component';
 export class AllTracksComponent implements OnInit {
 
   tracks: Track[] = [];
-  track: any;
+  currentActiveTrack: any;
 
   constructor(
     private tracksService: TracksService,
@@ -48,8 +48,8 @@ export class AllTracksComponent implements OnInit {
     this.playlistsService.addTrackToPlaylist({trackId, playlistId }).subscribe()
   }
 
-  playTrack(track, index){
-    this.track = { track: track, index: index} 
+  onPlayCommand(event){
+    this.currentActiveTrack = event;
   }
 
 }
