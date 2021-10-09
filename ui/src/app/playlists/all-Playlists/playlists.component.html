@@ -1,23 +1,25 @@
 <ng-container *ngIf="playlists?.length">
-    <h1>All Playlists</h1>
-    <div class="playlists-wrap">
-        <ng-container *ngIf="playlists.length">
-            <mat-card *ngFor="let playlist of playlists">
-                <mat-card-title>{{playlist.name}}</mat-card-title>
-                <mat-card-content (click)="goToPlaylist(playlist.id)">
-                    <img [src]='createImageUrl(playlist.playlist_cover.url) || defaultPlaylistUrl' alt="">
-                </mat-card-content>
-            </mat-card>
-        </ng-container>
+  <h1>All Playlists</h1>
+  <div class="playlists-wrap">
+    <ng-container *ngIf="playlists.length">
+      <div *ngFor="let playlist of playlists" class="playlist-wrapper" (click)="goToPlaylist(playlist.id)">
+        <img [src]='createImageUrl(playlist.playlist_cover.url) || defaultPlaylistUrl' alt="">
+        <div class="info-wrapper">
+          <p class="playlist-name">{{playlist.name}}</p>
+          <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>
+        </div>
+      </div>
+    </ng-container>
 
-    </div>
-    <div class="flex-center">
-        <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create new  Playlist</button>
-    </div>
+  </div>
+  <div class="flex-center">
+    <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create new Playlist</button>
+  </div>
 </ng-container>
 
 <ng-container *ngIf="!playlists?.length">
-    <app-no-result-component>
-        <a routerLink="/new-playlist"><button mat-button mat-raised-button color="primary"> Create your first playlist </button></a>
-    </app-no-result-component>
+  <app-no-result-component>
+    <a routerLink="/new-playlist"><button mat-button mat-raised-button color="primary"> Create your first playlist
+      </button></a>
+  </app-no-result-component>
 </ng-container>

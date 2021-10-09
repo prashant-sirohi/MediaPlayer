@@ -20,7 +20,7 @@ export class AllPlaylistsDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.playlistsService.getAll().subscribe((res: any) => {
-      this.playlists = res.playlists;
+      this.playlists = res;
     })
   }
 

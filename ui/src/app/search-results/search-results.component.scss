@@ -6,6 +6,10 @@
         border-bottom: 1px solid gray;
         cursor: pointer;
     }
+    p {
+        margin: 0;
+        padding: .5rem;
+    }
 }
 .playlists {
     display: flex;
@@ -16,7 +20,6 @@
     .playlist {
         width: 100px;
         height: 100px;
-        display: flex;
         flex-direction: column;
         align-items: center;
         cursor: pointer;
@@ -26,4 +29,8 @@
             object-fit: cover;
         }
     }
+}
+h2 {
+    text-align: center;
+    align-items: center;
 }

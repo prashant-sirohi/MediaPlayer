@@ -4,7 +4,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists or /playlists.json
   def index
     @playlists = Playlist.all
-    render json: {playlists: @playlists}
+    render json: @playlists, include: ['tracks'], meta: { total: Track.count }
   end
 
   # GET /playlists/1 or /playlists/1.json
