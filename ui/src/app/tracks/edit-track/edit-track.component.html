@@ -1,8 +1,16 @@
-
 <mat-card>
     <mat-card-title>Fill out track details</mat-card-title>
     <mat-card-content>
         <form (ngSubmit)="createTrack()" [formGroup]="trackForm" enctype="multipart/form-data">
+            <img [hidden]="!trackCoverUrl" [src]='trackCoverUrl' alt="">
+            <input type="file" #trackCover id="trackCover" class="ng-hide" name="trackCover"
+                (change)="onFileChange($event)" accept="image/jpeg, image/png" />
+            <label [ngClass]="{'ng-hide': trackCoverUrl}" for="trackCover">
+                <span>
+                    <mat-icon>cloud_upload</mat-icon>
+                    Chose a cover
+                </span>
+            </label>
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Choose a name for your track..." formControlName="name">
@@ -11,9 +19,6 @@
                 <mat-label>Artist</mat-label>
                 <input matInput placeholder="Artist of the track..." formControlName="artist">
             </mat-form-field>
-            <img [src]='trackCoverUrl' alt="">
-            <input type="file" #trackCover id="trackCover" class="ng-hide" name="trackCover"
-                    (change)="onFileChange($event)" accept="image/jpeg, image/png" />
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
                 <button type="submit" mat-raised-button color="primary">Create New Track</button>
             </div>

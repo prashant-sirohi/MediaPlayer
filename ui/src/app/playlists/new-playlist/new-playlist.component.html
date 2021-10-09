@@ -11,8 +11,13 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>
-                <input matInput placeholder="A short description of your playlist..." formControlName="description">
-            </mat-form-field>
+                <textarea matInput
+                    formControlName="description"
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"></textarea>
+                    </mat-form-field>
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
                 <button type="submit" mat-raised-button color="primary">Create New Playlist</button>
             </div>

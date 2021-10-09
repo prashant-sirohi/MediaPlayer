@@ -1,6 +1,7 @@
+import { NotificationService } from './../../services/notification.service';
 import { PlaylistsService } from './../../services/playlists.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,23 +15,28 @@ export class NewPlaylistComponent implements OnInit {
     private fb: FormBuilder,
     private playlistsService: PlaylistsService,
     private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   playlistForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-    // playlistCover: [''],
-    description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(240)]],
+    description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(240)]],
   });
 
   ngOnInit(): void {
   }
 
   createPlaylist() {
-    const name = this.playlistForm.get('name')?.value
-    const description = this.playlistForm.get('description')?.value
-    this.playlistsService.create({name, description, playlist_cover: ''}).subscribe((response: any) => {
-      this.goToPlaylist(response.id)
-    })
+    const isValid = !this.playlistForm.invalid
+    if(isValid) {
+      const name = this.playlistForm.get('name')?.value
+      const description = this.playlistForm.get('description')?.value
+      this.playlistsService.create({name, description, playlist_cover: ''}).subscribe((response: any) => {
+        this.goToPlaylist(response.id)
+      }) 
+    } else {
+      this.notificationService.show('Cannot save as form has errors')
+    }
   }
 
   goToPlaylist(playlistId: any) {

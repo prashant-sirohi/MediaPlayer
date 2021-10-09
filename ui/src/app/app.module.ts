@@ -1,3 +1,4 @@
+import { NotificationService } from './services/notification.service';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from './services/search.service';
 import { NoResultComponentComponent } from './no-result-component/no-result-component.component';
@@ -55,7 +56,7 @@ import { PlayerComponent } from './player/player.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [PlaylistsService, TracksService, NavigationService, SearchService],
+  providers: [PlaylistsService, TracksService, NavigationService, SearchService, NotificationService],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule,
