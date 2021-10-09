@@ -2,12 +2,18 @@
     <mat-card>
         <mat-card-content>
             <div>
-                <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
-                    (change)="onFileChange($event)" accept="image/jpeg, image/png" />
             </div>
             <div class="pl-info">
                 <div>
-                    <img [src]='playlistCoverUrl || defaultPlaylistUrl' alt="">
+                    <img [hidden]="!playlistCoverUrl" [src]='playlistCoverUrl' alt="">
+                    <input type="file" #playlistCover id="playlistCover" class="ng-hide" name="playlistCover"
+                        (change)="onFileChange($event)" accept="image/jpeg, image/png" />
+                    <label [hidden]="playlistCoverUrl" [ngClass]="{'ng-hide': playlistCoverUrl}" for="playlistCover">
+                        <span>
+                            <mat-icon>cloud_upload</mat-icon>
+                            Chose a cover
+                        </span>
+                    </label>
                 </div>
                 <div class="pl-name">
                     {{playlist.name}}
@@ -16,7 +22,12 @@
             <div class="pl-desc">{{playlist.description}}</div>
         </mat-card-content>
     </mat-card>
-    <button mat-button mat-raised-button color="primary" (click)="openTracksDialog()">Add more Tracks</button>
+    <div class="add-tracks-btn">
+        <button mat-button mat-raised-button color="primary" (click)="openTracksDialog()">
+            <mat-icon>add_circle</mat-icon>
+            Add more Tracks
+        </button>
+    </div>
 </div>
 <div class="tracks-list" *ngIf="playlist">
     <ng-container *ngFor="let track of playlist.tracks; let i = index">

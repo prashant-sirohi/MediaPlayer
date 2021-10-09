@@ -39,6 +39,10 @@ export class AllTracksDialogComponent implements OnInit {
   }
 
   close() {
+    this.dialogRef.close();
+  }
+
+  done() {
     this.dialogRef.close(this.selectedTracks);
   }
 
