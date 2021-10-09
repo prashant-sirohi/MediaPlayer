@@ -75,7 +75,10 @@ export class ShowPlaylistComponent implements OnInit {
 
   openTracksDialog(){
       const dialogRef = this.dialog.open(AllTracksDialogComponent, {
-        data: {}
+        data: {
+          playlistId: this.playlist.id,
+          filterAddedSongs: true
+        }
       });
   
       dialogRef.afterClosed().subscribe(result => {

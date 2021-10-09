@@ -7,6 +7,12 @@ class TracksController < ApplicationController
     render json: {tracks: @tracks}
   end
 
+  def get_filtered_tracks
+    @existingTrackIds = Playlist.find(params[:playlistId]).tracks.ids
+    @tracks = Track.where.not(id: @existingTrackIds)
+    render json: {tracks: @tracks}
+  end
+
   # GET /tracks/1 or /tracks/1.json
   def show
     render json: {track: @track}

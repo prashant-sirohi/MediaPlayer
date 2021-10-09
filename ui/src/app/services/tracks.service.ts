@@ -20,6 +20,10 @@ export class TracksService {
     return this.http.get<Track[]>(this.url)
   }
 
+  getFilteredTracks(playlistId: number): Observable<Track[]> {
+    return this.http.get<Track[]>(`${this.url}/get_filtered_tracks/${playlistId}`)
+  }
+
   getOne(id: number): Observable<Track> {
     return this.http.get<Track>(`${this.url}/${id}`)
   }

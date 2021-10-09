@@ -3,7 +3,7 @@
   <div class="tracks-wrap">
     <ng-container *ngIf="tracks">
       <ng-container *ngFor="let track of tracks">
-        <app-track-line-item (trackSelected)="onTrackSelected($event)" [track]="track" [allowSelection]="true" [allowActions]="false"></app-track-line-item>
+        <app-track-line-item  (trackDismissed)="onTrackDismissed($event)" (trackSelected)="onTrackSelected($event)" [track]="track" [allowSelection]="true" [allowActions]="false"></app-track-line-item>
       </ng-container>
     </ng-container>
   </div>
