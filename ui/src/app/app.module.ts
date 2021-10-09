@@ -1,3 +1,5 @@
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchService } from './services/search.service';
 import { NoResultComponentComponent } from './no-result-component/no-result-component.component';
 import { AllTracksDialogComponent } from './tracks/all-tracks-dialog/all-tracks-dialog.component';
 import { ShowTrackComponent } from './tracks/show-track/show-track.component';
@@ -39,7 +41,8 @@ import { NewTrackComponent } from './tracks/new-track/new-track.component';
     EditTrackComponent,
     ShowTrackComponent,
     AllTracksDialogComponent,
-    NoResultComponentComponent
+    NoResultComponentComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { NewTrackComponent } from './tracks/new-track/new-track.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [PlaylistsService, TracksService, NavigationService],
+  providers: [PlaylistsService, TracksService, NavigationService, SearchService],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule,

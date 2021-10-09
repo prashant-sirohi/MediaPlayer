@@ -1,0 +1,29 @@
+.tracks {
+    border-bottom: 4px solid gray;
+    .track-line-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        cursor: pointer;
+    }
+}
+.playlists {
+    display: flex;
+    justify-content: space-evenly;
+    .playlist-wrapper {
+        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    }
+    .playlist {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+}

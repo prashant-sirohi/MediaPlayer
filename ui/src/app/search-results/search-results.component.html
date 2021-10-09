@@ -1,0 +1,23 @@
+<!-- <ng-container *ngIf="!hide"> -->
+    <ng-container *ngIf="tracks">
+        <div class="tracks">
+            <div *ngFor="let track of tracks">
+                <span class="track-line-item" (click)="goToTrack(track)">
+                    <p>{{track.name}}</p>
+                    <p>{{track.artist}}</p>
+                </span>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="playlists">
+        <h3>Playlists</h3>
+        <div class="playlists">
+            <div class="playlist-wrapper" *ngFor="let playlist of playlists">
+                <div class="playlist" (click)="goToPlaylist(playlist)">
+                    <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
+                    {{playlist.name}}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+<!-- </ng-container> -->
