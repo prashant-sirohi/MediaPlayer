@@ -14,6 +14,14 @@ h1 {
         mat-card-title {
             text-align: center;
         }
+        mat-card-content {
+            cursor: pointer;
+            img {
+                height: 188px;
+                width: 200px;
+                object-fit: cover;
+            }
+        }
         mat-card-actions {
             div {
                 display: flex;

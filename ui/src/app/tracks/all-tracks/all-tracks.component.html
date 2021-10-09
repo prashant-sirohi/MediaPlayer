@@ -1,6 +1,17 @@
-<ng-container *ngFor="let track of tracks; let i = index">
-    <app-track-line-item [track]="track" [allowActions]="true" (click)="playTrack(track, i)"></app-track-line-item>
+<ng-container *ngIf="tracks?.length">
+    <button mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add Track</button>
+    <ng-container *ngFor="let track of tracks">
+        <app-track-line-item [track]="track" [allowActions]="true"></app-track-line-item>
+    </ng-container>
+    <div>
+        <app-player [files] = "tracks" [playTrack] = "track"></app-player>
+    </div>
 </ng-container>
-<div>
-    <app-player [files] = "tracks" [playTrack] = "track"></app-player>
-</div>
+
+<ng-container *ngIf="!tracks?.length">
+    <app-no-result-component>
+        <!-- <button *ngIf="tracks" mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add Track</button> -->
+        <a routerLink="/new-track"><button mat-button mat-raised-button color="primary"> Create your first track </button></a>
+    </app-no-result-component>
+</ng-container>
+

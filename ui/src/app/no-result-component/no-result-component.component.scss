@@ -1,0 +1,19 @@
+mat-card {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    mat-card-content {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: center;
+        background-image: url('../../assets/no-results-found.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 400px;
+        height: 400px;
+    }
+}
+.mat-card:not([class*=mat-elevation-z])  {
+    box-shadow: none;
+}

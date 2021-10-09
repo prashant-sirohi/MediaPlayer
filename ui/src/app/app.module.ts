@@ -1,3 +1,4 @@
+import { NoResultComponentComponent } from './no-result-component/no-result-component.component';
 import { AllTracksDialogComponent } from './tracks/all-tracks-dialog/all-tracks-dialog.component';
 import { ShowTrackComponent } from './tracks/show-track/show-track.component';
 import { EditTrackComponent } from './tracks/edit-track/edit-track.component';
@@ -39,7 +40,8 @@ import { PlayerComponent } from './player/player.component';
     EditTrackComponent,
     ShowTrackComponent,
     AllTracksDialogComponent,
-    PlayerComponent
+    PlayerComponent,
+    NoResultComponentComponent
   ],
   imports: [
     BrowserModule,
