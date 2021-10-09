@@ -1,26 +1,32 @@
 <h1 mat-dialog-title>Choose a playlist</h1>
 <div mat-dialog-content>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field> -->
   <div class="playlists-wrap">
     <ng-container *ngIf="playlists">
-      <mat-card *ngFor="let playlist of playlists">
+      <!-- <mat-card *ngFor="let playlist of playlists">
         <mat-card-title>{{playlist.name}}</mat-card-title>
         <mat-card-content>
-
+          <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
         </mat-card-content>
         <mat-card-actions>
           <div>
             <button mat-button mat-raised-button color="primary" (click)="selectPlaylist(playlist)">Choose</button>
           </div>
         </mat-card-actions>
-      </mat-card>
+      </mat-card> -->
+      <div *ngFor="let playlist of playlists" class="playlist-wrapper">
+        <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
+        <div class="info-wrapper">
+          <p class="playlist-name">{{playlist.name}}</p>
+          <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>
+        </div>
+        <div class="action">
+          <mat-checkbox color="primary" (change)="selectPlaylist($event.checked, playlist)"></mat-checkbox>
+        </div>
+      </div>
     </ng-container>
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="close()">Close</button>
-  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Done</button> -->
+  <button mat-button mat-raised-button color="warn" (click)="close()">Close</button>
+  <button mat-button mat-raised-button color="primary" (click)="done()">Done</button>
 </div>

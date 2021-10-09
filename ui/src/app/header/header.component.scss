@@ -8,6 +8,7 @@
   color: #424242;
   position: fixed;
   left: 0;
+  top: 0;
 }
 .header-menu {
   display: flex;
@@ -19,9 +20,10 @@
         width: 100%;
         background: #0c0608;
         border: 1px solid #464646;
-        font-size: 24px;
+        font-size: 14px;
         outline: none;
         color: #464646;
+        height: 30px;
       }
     }
     app-search-results {
@@ -35,7 +37,7 @@
       min-width: 574px;
       padding: 1rem;
       flex-direction: column;
-      background: #464646;
+      background: #212121;
       color: lightgray;
     }
   }

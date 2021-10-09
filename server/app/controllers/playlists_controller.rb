@@ -7,6 +7,12 @@ class PlaylistsController < ApplicationController
     render json: @playlists, include: ['tracks'], meta: { total: Track.count }
   end
 
+  def get_filtered_playlists
+    @existingPlaylistIds = Track.find(params[:trackId]).playlists.ids
+    @playlists = Playlist.where.not(id: @existingPlaylistIds)
+    render json: {playlists: @playlists}
+  end
+
   # GET /playlists/1 or /playlists/1.json
   def show
     render json: @playlist.to_json(include: :tracks)
@@ -60,11 +66,13 @@ class PlaylistsController < ApplicationController
   end
 
   def add_track_to_playlist
-    @playlist = Playlist.find(params[:playlist_id])
+    @playlists = Playlist.where(id: params[:playlist_ids])
     @track = Track.find(params[:track_id])
-    @playlist.tracks << @track
-    @playlist.save()
-    render json: @playlist
+    for playlist in @playlists do
+      playlist.tracks << @track
+      playlist.save()
+    end
+    render json: @track
   end
 
   def add_tracks_to_playlist

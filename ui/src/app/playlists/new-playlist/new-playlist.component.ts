@@ -20,7 +20,7 @@ export class NewPlaylistComponent implements OnInit {
 
   playlistForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-    description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(240)]],
+    description: ['', []],
   });
 
   ngOnInit(): void {

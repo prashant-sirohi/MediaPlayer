@@ -1,9 +1,11 @@
 .tracks {
-    border-bottom: 4px solid gray;
+    border-bottom: 2px solid gray;
     .track-line-item {
+        &:hover{
+            background: #464646;
+        }
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid gray;
         cursor: pointer;
     }
     p {

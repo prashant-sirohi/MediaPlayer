@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AllPlaylistsDialogComponent } from 'src/app/playlists/all-playlists-dialog/all-playlists-dialog.component';
 import { PlaylistsService } from 'src/app/services/playlists.service';
 import { Track } from '../interfaces';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-track-line-item',
@@ -31,16 +32,20 @@ export class TrackLineItemComponent implements OnInit {
 
   openPlaylistDialog(trackId: number) {
     const dialogRef = this.dialog.open(AllPlaylistsDialogComponent, {
-      data: {}
+      data: {
+        trackId: this.track.id,
+        filterPlaylist: true
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.addTrackToPlaylist(result.id, trackId)
+      const playlistIds = _.map(result,'id')
+      this.addTrackToPlaylist(playlistIds, trackId)
     });
   }
 
-  addTrackToPlaylist(playlistId, trackId) {
-    this.playlistsService.addTrackToPlaylist({trackId, playlistId }).subscribe()
+  addTrackToPlaylist(playlistIds, trackId) {
+    this.playlistsService.addTrackToPlaylist({trackId, playlistIds }).subscribe()
   }
 
   goToTrack() {

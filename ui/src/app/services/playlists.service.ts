@@ -22,6 +22,10 @@ export class PlaylistsService {
     return this.http.get<Playlist[]>(this.url)
   }
 
+  getFilteredPlaylists(trackId: number): Observable<Playlist[]> {
+    return this.http.get<Playlist[]>(`${this.url}/get_filtered_playlists/${trackId}`)
+  }
+
   getOne(id: number): Observable<Playlist> {
     return this.http.get<Playlist>(`${this.url}/${id}`)
   }
@@ -34,9 +38,9 @@ export class PlaylistsService {
     return this.http.post<Playlist>(`${this.url}/${request.id}/upload_playlist_cover`, request.formData)
   }
 
-  addTrackToPlaylist(request: {trackId: number, playlistId: number}) {
-    const {trackId, playlistId} = request;
-    return this.http.post<Playlist>(`${this.url}/add_track_to_playlist`, {track_id: trackId, playlist_id: playlistId})
+  addTrackToPlaylist(request: {trackId: number, playlistIds: number[]}) {
+    const {trackId, playlistIds} = request;
+    return this.http.post<Playlist>(`${this.url}/add_track_to_playlist`, {track_id: trackId, playlist_ids: playlistIds})
   }
 
   addTracksToPlaylist(request: {tracks: Track[], playlistId: number}) {
