@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AllPlaylistsDialogComponent } from 'src/app/playlists/all-playlists-dialog/all-playlists-dialog.component';
 import { TracksService } from 'src/app/services/tracks.service';
 import { Track } from '../interfaces';
+import { PlayerComponent } from 'src/app/player/player.component';
 
 @Component({
   selector: 'app-all-tracks',
@@ -14,6 +15,7 @@ import { Track } from '../interfaces';
 export class AllTracksComponent implements OnInit {
 
   tracks: Track[] = [];
+  track: any;
 
   constructor(
     private tracksService: TracksService,
@@ -44,6 +46,10 @@ export class AllTracksComponent implements OnInit {
 
   addTrackToPlaylist(playlistId, trackId) {
     this.playlistsService.addTrackToPlaylist({trackId, playlistId }).subscribe()
+  }
+
+  playTrack(track, index){
+    this.track = { track: track, index: index} 
   }
 
 }

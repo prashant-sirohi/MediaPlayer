@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { PlaylistsComponent } from './playlists/all-Playlists/playlists.component';
 import { MaterialModule } from './material.module';
 import { NewTrackComponent } from './tracks/new-track/new-track.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NewTrackComponent } from './tracks/new-track/new-track.component';
     EditTrackComponent,
     ShowTrackComponent,
     AllTracksDialogComponent,
+    PlayerComponent,
     NoResultComponentComponent
   ],
   imports: [

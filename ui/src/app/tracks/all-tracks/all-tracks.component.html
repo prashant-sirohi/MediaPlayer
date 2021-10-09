@@ -3,6 +3,9 @@
     <ng-container *ngFor="let track of tracks">
         <app-track-line-item [track]="track" [allowActions]="true"></app-track-line-item>
     </ng-container>
+    <div>
+        <app-player [files] = "tracks" [playTrack] = "track"></app-player>
+    </div>
 </ng-container>
 
 <ng-container *ngIf="!tracks?.length">

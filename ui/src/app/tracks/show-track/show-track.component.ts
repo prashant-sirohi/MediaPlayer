@@ -17,6 +17,7 @@ export class ShowTrackComponent implements OnInit {
   ) { }
   track: Track
   trackCoverUrl: string;
+  trackSingle: any;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -30,6 +31,10 @@ export class ShowTrackComponent implements OnInit {
 
   createImageUrl(imageUrl: string) {
     return `${environment.apiBase}${imageUrl}`
+  }
+  
+  playTrack(track, index){
+    this.trackSingle = { track: track, index: index} 
   }
 
 }
