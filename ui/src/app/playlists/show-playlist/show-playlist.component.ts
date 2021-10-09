@@ -5,6 +5,8 @@ import { PlaylistsService } from 'src/app/services/playlists.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
+import { PlayerComponent } from 'src/app/player/player.component';
+import { Track } from 'src/app/tracks/interfaces';
 
 @Component({
   selector: 'app-show-playlist',
@@ -20,6 +22,9 @@ export class ShowPlaylistComponent implements OnInit {
   ) { }
 
   playlist: Playlist;
+  tracks : Array<Track> = [];
+  currentActiveTrack: any;
+
   id: number;
   @ViewChild('playlistCover') private playlistCover;
   playlistCoverUrl: string;
@@ -35,6 +40,7 @@ export class ShowPlaylistComponent implements OnInit {
       this.id = +params.id
       this.playlistsService.getOne(this.id).subscribe(res => {
         this.playlist = res;
+        this.tracks = res.tracks;
         this.playlistCoverUrl = this.createImageUrl(res.playlist_cover.url)
       })
     })
@@ -77,5 +83,9 @@ export class ShowPlaylistComponent implements OnInit {
           this.playlist = res
         })
       });
+  }
+
+  playTrack(track, index) {
+    this.currentActiveTrack = { track, index: index}
   }
 }
