@@ -8,7 +8,6 @@
             playing
         </div>
     </mat-card-title>
-    <!-- <mat-card-content (click)="goToTrack()"> -->
     <mat-card-content>
         <div class="tracks-wrap" >
             <div class="track">
@@ -21,6 +20,6 @@
     </mat-card-content>
     <mat-card-actions>
         <button *ngIf="allowActions" mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Add to Playlist</button>
-        <button *ngIf="allowSelection" mat-button mat-raised-button color="primary" (click)="selectTrack(track)">Select</button>
+        <mat-checkbox color="primary" *ngIf="allowSelection" (change)="selectTrack($event.checked, track)"></mat-checkbox>
     </mat-card-actions>
 </mat-card>

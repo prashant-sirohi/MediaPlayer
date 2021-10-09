@@ -34,7 +34,6 @@ export class ShowPlaylistComponent implements OnInit {
   fileSizeExceeds = false;
   fileLabel: string = '';
   loading = false;
-  defaultPlaylistUrl = '../../../assets/default_track_cover.jpeg';
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -43,12 +42,13 @@ export class ShowPlaylistComponent implements OnInit {
         this.playlist = res;
         this.tracks = res.tracks;
         this.playlistCoverUrl = this.createImageUrl(res.playlist_cover.url)
+        console.log("TCL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ~ file: show-playlist.component.ts ~ line 44 ~ ShowPlaylistComponent ~ this.playlistsService.getOne ~ this.playlistCoverUrl", this.playlistCoverUrl)
       })
     })
   }
 
   createImageUrl(imageUrl: string) {
-    return `${environment.apiBase}${imageUrl}`
+    return imageUrl ? `${environment.apiBase}${imageUrl}` : null;
   }
 
   onFileChange(event: any) {
@@ -76,13 +76,19 @@ export class ShowPlaylistComponent implements OnInit {
 
   openTracksDialog(){
       const dialogRef = this.dialog.open(AllTracksDialogComponent, {
-        data: {}
+        width: '600px',
+        data: {
+          playlistId: this.playlist.id,
+          filterAddedSongs: true
+        }
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        this.playlistsService.addTracksToPlaylist({tracks: result, playlistId: this.playlist.id}).subscribe(res => {
-          this.playlist = res
-        })
+        if(result.length) {
+          this.playlistsService.addTracksToPlaylist({tracks: result, playlistId: this.playlist.id}).subscribe(res => {
+            this.playlist = res
+          })
+        }
       });
   }
   onPlayCommand(event){

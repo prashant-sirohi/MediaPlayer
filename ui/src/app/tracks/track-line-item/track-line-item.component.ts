@@ -18,6 +18,7 @@ export class TrackLineItemComponent implements OnInit {
   @Input() trackIndex: number;
   @Output() trackSelected = new EventEmitter<Track>();
   @Output() currentTrack = new EventEmitter<any>();
+  @Output() trackDismissed = new EventEmitter<Track>();
 
   constructor(
     private playlistsService: PlaylistsService,
@@ -46,8 +47,8 @@ export class TrackLineItemComponent implements OnInit {
     this.router.navigate([`/tracks/${this.track.id}`])
   }
 
-  selectTrack(track: Track) {
-    this.trackSelected.emit(track)
+  selectTrack(checked: boolean, track: Track) {
+    checked ? this.trackSelected.emit(track) : this.trackDismissed.emit(track)
   }
   playThisTrack(track: Track){
     this.currentTrack.emit({track:track, index: this.trackIndex})

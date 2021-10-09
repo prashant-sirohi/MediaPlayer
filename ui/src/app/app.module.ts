@@ -1,3 +1,6 @@
+import { NotificationService } from './services/notification.service';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchService } from './services/search.service';
 import { NoResultComponentComponent } from './no-result-component/no-result-component.component';
 import { AllTracksDialogComponent } from './tracks/all-tracks-dialog/all-tracks-dialog.component';
 import { ShowTrackComponent } from './tracks/show-track/show-track.component';
@@ -41,8 +44,9 @@ import { FooterComponent } from './footer/footer.component';
     EditTrackComponent,
     ShowTrackComponent,
     AllTracksDialogComponent,
-    PlayerComponent,
     NoResultComponentComponent,
+    SearchResultsComponent,
+    PlayerComponent,
     FooterComponent
   ],
   imports: [
@@ -54,7 +58,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [PlaylistsService, TracksService, NavigationService],
+  providers: [PlaylistsService, TracksService, NavigationService, SearchService, NotificationService],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule,

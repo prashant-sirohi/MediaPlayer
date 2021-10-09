@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,12 +16,13 @@ export class EditTrackComponent implements OnInit {
     private fb: FormBuilder,
     private tracksService: TracksService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   trackForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-    artist: [''],
+    artist: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
   });
   id: number;
   trackCover: any;
@@ -36,12 +38,17 @@ export class EditTrackComponent implements OnInit {
   }
 
   createTrack() {
-    const name = this.trackForm.get('name')?.value
-    const cover = this.trackForm.get('cover')?.value
-    const artist = this.trackForm.get('artist')?.value
-    this.tracksService.edit({id: this.id, name, cover, file: null, artist}).subscribe((response: any) => {
-      this.gotToTrack(response.id)
-    })
+    const isValid = !this.trackForm.invalid
+    if(isValid) {
+      const name = this.trackForm.get('name')?.value
+      const cover = this.trackForm.get('cover')?.value
+      const artist = this.trackForm.get('artist')?.value
+      this.tracksService.edit({id: this.id, name, cover, file: null, artist}).subscribe((response: any) => {
+        this.gotToTrack(response.id)
+      })
+    } else {
+      this.notificationService.show('Cannot save form as it has errors')
+    }
   }
 
   gotToTrack(id: number) {

@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     end
   end
   post 'tracks/upload_track_file' => 'tracks#upload_track_file'
+  get 'tracks/get_filtered_tracks/:playlistId' => 'tracks#get_filtered_tracks'
   post 'playlists/add_track_to_playlist' => 'playlists#add_track_to_playlist'
   post 'playlists/add_tracks_to_playlist' => 'playlists#add_tracks_to_playlist'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'search' => 'search#search'
   root to: 'playlists#index'
 end

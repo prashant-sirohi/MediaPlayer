@@ -1,13 +1,12 @@
 <header>
     <div class="header-menu">
         <span (click)="toggleSideNav()" class="menu-icon material-icons">menu</span>
-        <form class="example-form">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <span matPrefix> </span>
-                <input type="tel" matInput placeholder="Search" name= "search">
-                <button matSuffix mat-button><mat-icon >search</mat-icon></button>
-            </mat-form-field>
-            <br/>
-        </form>
+        <div class="search-wrapper">
+            <form [formGroup]="searchForm">
+                <input type="text" formControlName="query">
+                <br/>
+            </form>
+            <app-search-results (hide)="onHide($event)" *ngIf="playlistsFound?.length || tracksFound?.length" [playlists]="playlistsFound" [tracks]="tracksFound"></app-search-results>
+        </div>
     </div>
 </header>

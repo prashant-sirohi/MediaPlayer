@@ -1,10 +1,15 @@
-
 <mat-card>
     <mat-card-title>Upload a new Track</mat-card-title>
     <mat-card-content>
-            <div>
-                <input type="file" #trackFile id="trackFile" class="ng-hide" name="trackFile"
-                    (change)="onFileChange($event)" accept=".mp3,audio/*" />
-            </div>
+        <div class="input-wrapper">
+            <input type="file" #trackFile id="trackFile" class="ng-hide" name="trackFile"
+                (change)="onFileChange($event)" accept=".mp3,audio/*" />
+            <label for="trackFile">
+                    <span>
+                        <mat-icon>cloud_upload</mat-icon>
+                        Chose a file
+                    </span>    
+            </label>
+        </div>
     </mat-card-content>
 </mat-card>

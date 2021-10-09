@@ -1,0 +1,30 @@
+:host {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ng-hide {
+        display: none;
+    }
+    mat-card {
+        padding: 4rem;
+        .input-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        label {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            height: 100px;
+            width: 100%;
+            border: 1px solid gray;
+            border-radius: 4px;
+            margin-top: 1rem;
+            span {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

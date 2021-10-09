@@ -1,43 +1,75 @@
 .playlist-info {
-    margin-bottom: 1rem;
-    mat-card {
-        padding: 0;
-        mat-card-content {
-            height: 30rem;
-            display: flex;
-            justify-content: flex-end;
-            flex-direction: column;
-            background-image: url('../../../assets/default_playlist_cover.jpg');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            width: auto;
-            padding: 1rem;
-            .pl-info {
-                font-size: 3rem;
-                flex: .2;
-                display: flex;
-                img {
-                    width: 100px;
-                    height: 100px;
-                }
-                // flex-direction: column;
-                // justify-content: flex-end;
-                .pl-name {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-            .pl-desc {
-                font-size: 1rem;
-                flex: .2;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
+  margin-bottom: 1rem;
+  mat-card {
+    padding: 0;
+    mat-card-content {
+      height: 30rem;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      background-image: url("../../../assets/default_playlist_cover.jpg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: auto;
+      padding: 1rem;
+      .pl-info {
+        font-size: 3rem;
+        flex: 1;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 50%;
         }
+        .pl-name {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .pl-desc {
+        font-size: 1rem;
+        flex: 0.2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: darkgray;
+      }
+      label {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        height: 300px;
+        width: 300px;
+        border: 1px solid gray;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        background: rgb(101 123 136 / 30%);
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+      &.ng-hide {
+        display: none;
+      }
     }
+    }
+    .ng-hide {
+      display: none;
+    }
+  }
 }
 .tracks-list {
-    padding: 2rem;
+  padding: 2rem;
+}
+.add-tracks-btn {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
