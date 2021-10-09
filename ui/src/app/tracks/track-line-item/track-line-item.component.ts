@@ -15,7 +15,9 @@ export class TrackLineItemComponent implements OnInit {
   @Input() track: Track;
   @Input() allowActions: boolean = false;
   @Input() allowSelection: boolean = false;
+  @Input() trackIndex: number;
   @Output() trackSelected = new EventEmitter<Track>();
+  @Output() currentTrack = new EventEmitter<any>();
 
   constructor(
     private playlistsService: PlaylistsService,
@@ -46,6 +48,9 @@ export class TrackLineItemComponent implements OnInit {
 
   selectTrack(track: Track) {
     this.trackSelected.emit(track)
+  }
+  playThisTrack(track: Track){
+    this.currentTrack.emit({track:track, index: this.trackIndex})
   }
 
 }

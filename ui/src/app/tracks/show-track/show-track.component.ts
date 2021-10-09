@@ -17,7 +17,7 @@ export class ShowTrackComponent implements OnInit {
   ) { }
   track: Track
   trackCoverUrl: string;
-  trackSingle: any;
+  currentActiveTrack: any;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -34,7 +34,11 @@ export class ShowTrackComponent implements OnInit {
   }
   
   playTrack(track, index){
-    this.trackSingle = { track: track, index: index} 
+    this.currentActiveTrack = { track: track, index: index} 
+  }
+  
+  onPlayCommand(event){
+    this.currentActiveTrack = event;
   }
 
 }

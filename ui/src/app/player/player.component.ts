@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, SimpleChanges, OnDestroy, EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AudioService } from '../services/audio.service';
 import { StreamState } from '../services/interfaces/stream.state';
@@ -14,9 +14,11 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
 
   @Input() files: Array<any> = [];
   @Input() playTrack: any;
+
   state: StreamState;
   currentFile: any = {};
   playing: boolean = false;
+  volumeSlider: boolean = false;
   apiBase = environment.apiBase;
 
   constructor(private audioService: AudioService) { 
@@ -30,8 +32,9 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(this.playTrack)
+    if(this.playTrack){
       this.openFile(this.apiBase+this.playTrack.track.file.url, this.playTrack.index)
+    }
   }
   ngOnDestroy(){
     this.pause();
@@ -85,6 +88,14 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy{
 
   onSliderChangeEnd(change) {
     this.audioService.seekTo(change.value);
+  }
+
+  onVolumeSliderChangeEnd(event){
+    this.audioService.volume(event.value/100);
+  }
+
+  showVolume(){
+    this.volumeSlider = !this.volumeSlider;
   }
 
 }

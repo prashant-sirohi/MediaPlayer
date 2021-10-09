@@ -1,6 +1,9 @@
 <div class="media-footer" *ngIf="playing">
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
+    <div class="track-info">
+      <strong>Playing:-</strong> {{playTrack.track.name}}
+    </div>
+    <mat-toolbar color="primary" class="main-player-box">
+      <mat-toolbar-row class="slider-play">
          {{ state?.readableCurrentTime }}
          <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
          {{ state?.readableDuration }}
@@ -22,6 +25,16 @@
         <button  mat-button [disabled]="isLastPlaying()" (click)="next()">
           <mat-icon mat-list-icon>skip_next</mat-icon>
         </button>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="volume-action">
+        <button  mat-button class="speaker-button" (click)="showVolume()">
+          <mat-icon mat-list-icon>volume_up</mat-icon>
+        </button>
+        <div class="volume-bar" *ngIf="volumeSlider">
+          <span class="volume">{{ state?.volume*100 }}</span>
+          <mat-slider class="volume-slider" min="0" [max]="100" step="10" [value]="state?.volume*100" (input)="onVolumeSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined" [vertical]="true"></mat-slider>
+          <span class="top-volume">100</span>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
 </div>

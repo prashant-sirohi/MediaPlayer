@@ -1,10 +1,10 @@
 <ng-container *ngIf="tracks?.length">
     <button mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add Track</button>
-    <ng-container *ngFor="let track of tracks">
-        <app-track-line-item [track]="track" [allowActions]="true"></app-track-line-item>
+    <ng-container *ngFor="let track of tracks; let i = index">
+        <app-track-line-item [track]="track" [allowActions]="true" [trackIndex]="i" (currentTrack)="onPlayCommand($event)"></app-track-line-item>
     </ng-container>
     <div>
-        <app-player [files] = "tracks" [playTrack] = "track"></app-player>
+        <app-player [files] = "tracks" [playTrack] = "currentActiveTrack"></app-player>
     </div>
 </ng-container>
 

@@ -1,6 +1,12 @@
 <mat-card>
-    <mat-card-title>
-        <img src='../../../assets/default_track_cover.jpeg' alt="">
+    <mat-card-title (click)="playThisTrack(track)">
+        <img src='../../../assets/default_track_cover.jpeg' alt="" class="line-thumb">
+        <div class="play-icon">
+            <mat-icon aria-label="play icon">play_circle</mat-icon>
+        </div>
+        <div class="playing">
+            playing
+        </div>
     </mat-card-title>
     <!-- <mat-card-content (click)="goToTrack()"> -->
     <mat-card-content>

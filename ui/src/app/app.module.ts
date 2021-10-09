@@ -24,6 +24,7 @@ import { PlaylistsComponent } from './playlists/all-Playlists/playlists.componen
 import { MaterialModule } from './material.module';
 import { NewTrackComponent } from './tracks/new-track/new-track.component';
 import { PlayerComponent } from './player/player.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PlayerComponent } from './player/player.component';
     ShowTrackComponent,
     AllTracksDialogComponent,
     PlayerComponent,
-    NoResultComponentComponent
+    NoResultComponentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

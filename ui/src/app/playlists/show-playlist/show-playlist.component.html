@@ -20,7 +20,7 @@
 </div>
 <div class="tracks-list" *ngIf="playlist">
     <ng-container *ngFor="let track of playlist.tracks; let i = index">
-        <app-track-line-item [track]="track" (click)="playTrack(track, i)"></app-track-line-item>
+        <app-track-line-item [track]="track" [trackIndex]="i" (currentTrack)="onPlayCommand($event)" [ngClass]="{'playingtrack' : playingTrackId == track.id}"></app-track-line-item>
     </ng-container>
 </div>
 <div>
