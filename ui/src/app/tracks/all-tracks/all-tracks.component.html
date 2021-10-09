@@ -1,3 +1,6 @@
-<ng-container *ngFor="let track of tracks">
-    <app-track-line-item [track]="track" [allowActions]="true"></app-track-line-item>
+<ng-container *ngFor="let track of tracks; let i = index">
+    <app-track-line-item [track]="track" [allowActions]="true" (click)="playTrack(track, i)"></app-track-line-item>
 </ng-container>
+<div>
+    <app-player [files] = "tracks" [playTrack] = "track"></app-player>
+</div>
