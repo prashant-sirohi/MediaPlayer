@@ -1,21 +1,35 @@
-<h1 mat-dialog-title>Choose a playlist</h1>
-<div mat-dialog-content>
-  <div class="playlists-wrap">
-    <ng-container *ngIf="playlists">
-      <div *ngFor="let playlist of playlists" class="playlist-wrapper">
-        <img [src]='playlist.playlist_cover.url | mpImage' alt="">
-        <div class="info-wrapper">
-          <p class="playlist-name">{{playlist.name}}</p>
-          <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>
+<ng-container *ngIf="playlists?.length">
+  <h1 mat-dialog-title>Choose a playlist</h1>
+  <div mat-dialog-content>
+    <div class="playlists-wrap">
+      <ng-container *ngIf="playlists">
+        <div *ngFor="let playlist of playlists" class="playlist-wrapper">
+          <img [src]='playlist.playlist_cover.url | mpImage' alt="">
+          <div class="info-wrapper">
+            <p class="playlist-name">{{playlist.name}}</p>
+            <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>
+          </div>
+          <div class="action">
+            <mat-checkbox color="primary" (change)="selectPlaylist($event.checked, playlist)"></mat-checkbox>
+          </div>
         </div>
-        <div class="action">
-          <mat-checkbox color="primary" (change)="selectPlaylist($event.checked, playlist)"></mat-checkbox>
-        </div>
-      </div>
-    </ng-container>
+      </ng-container>
+    </div>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-raised-button color="warn" (click)="close()">Close</button>
-  <button mat-button mat-raised-button color="primary" (click)="done()">Done</button>
-</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button color="warn" (click)="close()">Close</button>
+    <button mat-button mat-raised-button color="primary" (click)="done()">Done</button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!playlists?.length">
+  <div class="no-data">
+    Your track already exists in every playlist
+    <a routerLink="/new-playlist" (click)="close()">
+      <button mat-button mat-raised-button color="primary">
+        <mat-icon>add_circle</mat-icon>
+        Add more playlists
+      </button>
+    </a>
+  </div>
+</ng-container>

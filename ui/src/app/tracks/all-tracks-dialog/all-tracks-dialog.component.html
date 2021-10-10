@@ -16,11 +16,13 @@
   </div>
 </ng-container>
 <ng-container *ngIf="!tracks?.length">
-  All existing tracks have already been added to your playlist
-  <a routerLink="/new-track" (click)="close()">
-    <button mat-button mat-raised-button color="primary">
-      <mat-icon>add_circle</mat-icon>
-      Add more tracks
-    </button>
-  </a>
-</ng-container>
+  <div class="no-data">
+    All existing tracks have already been added to your playlist
+    <a routerLink="/new-track" (click)="close()">
+      <button mat-button mat-raised-button color="primary">
+        <mat-icon>add_circle</mat-icon>
+        Add more tracks
+      </button>
+    </a>
+  </div>
+</ng-container> 
