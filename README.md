@@ -18,6 +18,7 @@ This is a demo project showing off a very light weight media player
   - `bundle install`
   - `rails db:create`
   - `rails db:migrate`
+  - `rails s`
 - go to `/ui`
   - `npm i`
-  - `ng server`
+  - `npm start`
