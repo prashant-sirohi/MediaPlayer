@@ -1,18 +1,17 @@
 <ng-container *ngIf="tracks?.length">
     <ng-container *ngFor="let track of tracks; let i = index">
-        <app-track-line-item [track]="track" [allowActions]="true" [trackIndex]="i" (currentTrack)="onPlayCommand($event)"  [ngClass]="{'playingtrack' : playingTrackId == track.id}"></app-track-line-item>
+        <app-track-line-item [track]="track" [allowActions]="['add','view']" [trackIndex]="i" (currentTrack)="onPlayCommand($event)"  [ngClass]="{'playingtrack' : playingTrackId == track.id}"></app-track-line-item>
     </ng-container>
     <div>
         <app-player [files] = "tracks" [playTrack] = "currentActiveTrack"  (playingTrackNow)="onPlayingTrackChange($event)"></app-player>
     </div>
+    <div class="new-track-btn">
+        <button mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add New Track</button>
+    </div>
 </ng-container>
-<div class="new-track-btn">
-    <button mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add New Track</button>
-</div>
-<!-- <ng-container *ngIf="!tracks?.length">
+<ng-container *ngIf="!tracks?.length">
     <app-no-result-component>
-        <button *ngIf="tracks" mat-button mat-raised-button color="primary" (click)="goToNewTrack()">Add Track</button>
         <a routerLink="/new-track"><button mat-button mat-raised-button color="primary"> Create your first track </button></a>
     </app-no-result-component>
-</ng-container> -->
+</ng-container>
 

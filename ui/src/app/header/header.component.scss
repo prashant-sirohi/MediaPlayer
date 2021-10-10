@@ -15,6 +15,8 @@
   justify-content: center;
   .search-wrapper {
     form {
+      display: flex;
+      align-items: center;
       width: 600px;
       input {
         width: 100%;
@@ -25,6 +27,10 @@
         color: #464646;
         height: 30px;
       }
+      mat-icon {
+        color: #424242;
+        cursor: pointer;
+      }
     }
     app-search-results {
       display: flex;
@@ -34,7 +40,7 @@
       min-height: 300px;
       z-index: 999999;
       position: absolute;
-      min-width: 574px;
+      min-width: 544px;
       padding: 1rem;
       flex-direction: column;
       background: #212121;

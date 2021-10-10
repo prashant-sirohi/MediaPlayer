@@ -1,12 +1,5 @@
-<!-- <mat-card *ngIf="track">
-    <mat-card-content>
-        <img [src]='trackCoverUrl' alt=""  (click)="playTrack(track, 0)">
-        {{track.name}}
-        {{track.artist}}
-    </mat-card-content>
-</mat-card> -->
 <div class="single-track">
-    <app-track-line-item [track]="track" (click)="playTrack(track, 0)"></app-track-line-item>
+    <app-track-line-item [allowActions]="['add']" [track]="track" (click)="playTrack(track, 0)"></app-track-line-item>
 </div>
 <div>
     <app-player [files] = "[currentActiveTrack]" [playTrack] = "currentActiveTrack"></app-player>

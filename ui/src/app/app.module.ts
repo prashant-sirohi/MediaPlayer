@@ -1,3 +1,4 @@
+import { MpImagePipe } from './pipes/mp-image.pipe';
 import { NotificationService } from './services/notification.service';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from './services/search.service';
@@ -47,7 +48,8 @@ import { FooterComponent } from './footer/footer.component';
     NoResultComponentComponent,
     SearchResultsComponent,
     PlayerComponent,
-    FooterComponent
+    FooterComponent,
+    MpImagePipe
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ import { FooterComponent } from './footer/footer.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MpImagePipe
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

@@ -13,7 +13,7 @@
   <div class="playlists">
     <div class="playlist-wrapper" *ngFor="let playlist of playlists">
       <div class="playlist" (click)="goToPlaylist(playlist)">
-        <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
+        <img [src]='playlist.playlist_cover.url | mpImage' alt="">
         {{playlist.name}}
       </div>
     </div>

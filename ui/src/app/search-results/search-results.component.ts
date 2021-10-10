@@ -21,10 +21,6 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createImageUrl(imageUrl: string) {
-    return `${environment.apiBase}${imageUrl}`
-  }
-
   goToPlaylist(playlist: Playlist) {
     this.router.navigate([`playlist/${playlist.id}`])
     this.hide.emit(true)

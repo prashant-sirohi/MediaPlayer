@@ -54,4 +54,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  resetSearch(){
+    this.playlistsFound = []
+    this.tracksFound = []
+  }
+
 }

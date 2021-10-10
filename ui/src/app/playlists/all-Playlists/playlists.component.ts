@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlaylistsService } from '../../services/playlists.service';
 import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
@@ -30,10 +29,6 @@ export class PlaylistsComponent implements OnInit {
 
   goToPlaylist(playlistId: any) {
     this.router.navigate([`/playlist/${playlistId}`])
-  }
-
-  createImageUrl(imageUrl: string) {
-    return `${environment.apiBase}${imageUrl}`
   }
 
 }

@@ -52,8 +52,4 @@ export class AllPlaylistsDialogComponent implements OnInit {
     this.dialogRef.close(this.selectedPlaylists);
   }
 
-  createImageUrl(imageUrl: string) {
-    return `${environment.apiBase}${imageUrl}`
-  }
-
 }

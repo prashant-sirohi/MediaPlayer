@@ -2,9 +2,9 @@ h1 {
   text-align: center;
 }
 .playlists-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 300px);
   .playlist-wrapper {
     cursor: pointer;
     flex-direction: column;
@@ -19,24 +19,24 @@ h1 {
       border-radius: 4px;
     }
     .info-wrapper {
-        display: flex;
-        flex-direction: column;
-        p{
-            margin: 0;
-            &.playlist-name {
-                font-size: large;
-                font-weight: 500;
-            }
-            &.playlist-meta {
-                color: gray;
-            }
+      display: flex;
+      flex-direction: column;
+      p {
+        margin: 0;
+        &.playlist-name {
+          font-size: large;
+          font-weight: 500;
         }
+        &.playlist-meta {
+          color: gray;
+        }
+      }
     }
   }
   margin-bottom: 5rem;
 }
-.flex-center {
-  display: flex;
-  justify-content: center;
-  flex: 1;
+.fixed-bottom-right {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }

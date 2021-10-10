@@ -4,6 +4,7 @@
         <div class="search-wrapper">
             <form [formGroup]="searchForm">
                 <input type="text" formControlName="query" placeholder="Search for songs and playlists...">
+                <mat-icon *ngIf="playlistsFound?.length || tracksFound?.length" (click)="resetSearch()">cancel</mat-icon>
                 <br/>
             </form>
             <app-search-results (hide)="onHide($event)" *ngIf="playlistsFound?.length || tracksFound?.length" [playlists]="playlistsFound" [tracks]="tracksFound"></app-search-results>

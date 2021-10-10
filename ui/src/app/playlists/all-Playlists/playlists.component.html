@@ -3,16 +3,15 @@
   <div class="playlists-wrap">
     <ng-container *ngIf="playlists.length">
       <div *ngFor="let playlist of playlists" class="playlist-wrapper" (click)="goToPlaylist(playlist.id)">
-        <img [src]='createImageUrl(playlist.playlist_cover.url) || defaultPlaylistUrl' alt="">
+        <img [src]='playlist.playlist_cover.url | mpImage' alt="">
         <div class="info-wrapper">
           <p class="playlist-name">{{playlist.name}}</p>
           <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>
         </div>
       </div>
     </ng-container>
-
   </div>
-  <div class="flex-center">
+  <div class="fixed-bottom-right">
     <button mat-button mat-raised-button color="primary" (click)="goToNewPlaylist()">Create new Playlist</button>
   </div>
 </ng-container>

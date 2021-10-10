@@ -2,19 +2,8 @@
 <div mat-dialog-content>
   <div class="playlists-wrap">
     <ng-container *ngIf="playlists">
-      <!-- <mat-card *ngFor="let playlist of playlists">
-        <mat-card-title>{{playlist.name}}</mat-card-title>
-        <mat-card-content>
-          <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
-        </mat-card-content>
-        <mat-card-actions>
-          <div>
-            <button mat-button mat-raised-button color="primary" (click)="selectPlaylist(playlist)">Choose</button>
-          </div>
-        </mat-card-actions>
-      </mat-card> -->
       <div *ngFor="let playlist of playlists" class="playlist-wrapper">
-        <img [src]='createImageUrl(playlist.playlist_cover.url)' alt="">
+        <img [src]='playlist.playlist_cover.url | mpImage' alt="">
         <div class="info-wrapper">
           <p class="playlist-name">{{playlist.name}}</p>
           <p class="playlist-meta">Playlist - {{playlist?.tracks?.length || 0}} Songs</p>

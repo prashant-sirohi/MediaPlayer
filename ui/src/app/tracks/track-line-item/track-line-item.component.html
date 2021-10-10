@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title (click)="playThisTrack(track)">
-        <img [src]='track.cover.url != null ? createImageUrl(track.cover.url) : thumb' alt="" class="line-thumb">
+        <img [src]='track.cover.url | mpImage' alt="" class="line-thumb">
         <div class="play-icon">
             <mat-icon aria-label="play icon">play_circle</mat-icon>
         </div>
@@ -19,8 +19,8 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="allowActions" mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Add to Playlist</button>
-        <button *ngIf="allowActions" mat-button mat-raised-button color="accent" (click)="goToTrack()">View Track</button>
+        <button *ngIf="showAddToPlaylistButton" mat-button mat-raised-button color="primary" (click)="openPlaylistDialog(track.id)">Add to Playlist</button>
+        <button *ngIf="showViewTrackButton" mat-button mat-raised-button color="accent" (click)="goToTrack()">View Track</button>
         <mat-checkbox color="primary" *ngIf="allowSelection" (change)="selectTrack($event.checked, track)"></mat-checkbox>
     </mat-card-actions>
 </mat-card>

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AllPlaylistsDialogComponent } from 'src/app/playlists/all-playlists-dialog/all-playlists-dialog.component';
 import { PlaylistsService } from 'src/app/services/playlists.service';
@@ -15,7 +15,7 @@ import _ from 'lodash';
 export class TrackLineItemComponent implements OnInit {
 
   @Input() track: Track;
-  @Input() allowActions: boolean = false;
+  @Input() allowActions: string[] = [];
   @Input() allowSelection: boolean = false;
   @Input() trackIndex: number;
   @Output() trackSelected = new EventEmitter<Track>();
@@ -23,6 +23,8 @@ export class TrackLineItemComponent implements OnInit {
   @Output() trackDismissed = new EventEmitter<Track>();
   apiBase = environment.apiBase;
   thumb: string = '../../../assets/default_track_cover.jpeg';
+  showAddToPlaylistButton = false;
+  showViewTrackButton = false;
   
 
   constructor(
@@ -32,6 +34,8 @@ export class TrackLineItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showAddToPlaylistButton = _.includes(this.allowActions, 'add')
+    this.showViewTrackButton = _.includes(this.allowActions, 'view')
   }
 
   openPlaylistDialog(trackId: number) {
@@ -61,10 +65,6 @@ export class TrackLineItemComponent implements OnInit {
   }
   playThisTrack(track: Track){
     this.currentTrack.emit({track:track, index: this.trackIndex})
-  }
-
-  createImageUrl(imageUrl: string) {
-    return `${this.apiBase}${imageUrl}`
   }
 
 }
