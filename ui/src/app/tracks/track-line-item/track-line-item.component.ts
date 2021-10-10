@@ -40,6 +40,7 @@ export class TrackLineItemComponent implements OnInit {
 
   openPlaylistDialog(trackId: number) {
     const dialogRef = this.dialog.open(AllPlaylistsDialogComponent, {
+      width: '800px',
       data: {
         trackId: this.track.id,
         filterPlaylist: true

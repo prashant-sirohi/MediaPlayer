@@ -42,7 +42,6 @@ export class ShowPlaylistComponent implements OnInit {
         this.playlist = res;
         this.tracks = res.tracks;
         this.playlistCoverUrl = this.createImageUrl(res.playlist_cover.url)
-        console.log("TCL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ~ file: show-playlist.component.ts ~ line 44 ~ ShowPlaylistComponent ~ this.playlistsService.getOne ~ this.playlistCoverUrl", this.playlistCoverUrl)
       })
     })
   }
@@ -84,7 +83,7 @@ export class ShowPlaylistComponent implements OnInit {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        if(result.length) {
+        if(result?.length) {
           this.playlistsService.addTracksToPlaylist({tracks: result, playlistId: this.playlist.id}).subscribe(res => {
             this.playlist = res
           })
